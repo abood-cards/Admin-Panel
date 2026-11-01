@@ -1,0 +1,8 @@
+import React,{useState} from 'react';
+import {api} from './api';
+export function VerificationPanel({users=[],reload}){
+ const[busy,B]=useState(false),[error,E]=useState('');
+ async function reissue(id){B(true);E('');try{await api.post('/admin/verifications/'+id+'/reissue');await reload();}catch(e){E(e.response?.data?.message||'تعذر إعادة الإصدار');}finally{B(false);}}
+ return <section><p>الرموز متاحة للإدارة فقط. تحقق من هوية المشترك ثم سلّمه الرمز عبر وسيلتك المعتمدة. صلاحية الرمز24 ساعة وخمس محاولات. لا يرسل النظام SMS تلقائياً.</p>{error&&<p className="error">{error}</p>}<div className="table-wrap"><table><thead><tr><th>المشترك</th><th>الهاتف</th><th>نوعه</th><th>رمز التحقق</th><th>الصلاحية</th><th>إجراء</th></tr></thead><tbody>{users.map(u=><tr key={u._id}><td>{u.name}<small>{u.storeName}</small></td><td dir="ltr">+967 {u.phone}</td><td>{u.role==='owner'?'مالك شبكة':'بقالة'}</td><td><strong dir="ltr">{u.code||'منتهٍ / مقفل'}</strong></td><td>{u.expiresAt?new Date(u.expiresAt).toLocaleString('ar-YE'):''}<small>المحاولات: {u.attempts||0}/5</small></td><td><button disabled={busy||!u.active} onClick={()=>reissue(u._id)}>إصدار رمز جديد</button></td></tr>)}</tbody></table></div>{!users.length&&<p>لا حسابات بانتظار التحقق</p>}</section>;
+}
+export function NotificationsPanel({notifications=[],reload}){return <section>{notifications.map(n=><article className="card" key={n._id}><h3>{n.title}</h3><p>{n.body}</p><small>{new Date(n.createdAt).toLocaleString('ar-YE')}</small>{!n.readAt&&<button onClick={async()=>{await api.patch('/notifications/'+n._id+'/read');await reload();}}>تمت القراءة</button>}</article>)}</section>;}

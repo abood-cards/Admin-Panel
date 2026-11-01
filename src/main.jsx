@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { api } from "./api";
 import "./style.css";
+import {VerificationPanel,NotificationsPanel} from "./VerificationPanel";
 const amount = (n) => Number(n || 0).toLocaleString("ar-YE");
 function Login({ onLogin }) {
   const [phone, P] = useState(""),
@@ -109,7 +110,7 @@ function App() {
     B(true);
     E("");
     try {
-      const r = await api.get("/admin/" + tab);
+      const r = await api.get(tab==='notifications'?'/notifications':'/admin/'+tab);
       if (id === serial.current) D(r.data);
     } catch (e) {
       if (id === serial.current)
@@ -124,6 +125,7 @@ function App() {
   useEffect(() => {
     if (token) load();
   }, [token, tab]);
+  useEffect(()=>{if(!token||!['verifications','notifications'].includes(tab))return;const timer=setInterval(()=>load(),20000);return()=>clearInterval(timer);},[token,tab]);
   async function change(path, body) {
     B(true);
     try {
@@ -140,6 +142,8 @@ function App() {
     ["overview", "نظرة عامة", Activity],
     ["networks", "الشبكات والاشتراكات", Network],
     ["users", "حسابات المنظومة", Users],
+    ["verifications","رموز التحقق والتفعيل",ShieldCheck],
+    ["notifications","إشعارات الإدارة",Activity],
     ["audit", "سجل التدقيق", ScrollText],
     ["settings", "إعدادات المنظومة", ShieldCheck],
   ];
@@ -159,7 +163,7 @@ function App() {
           <img className="brand-logo small" src="/brand/karty-logo.png" alt="كرتي Karty" />
           <div>
             <b>كرتي</b>
-            <small>الإدارة المركزية · V3</small>
+            <small>الإدارة المركزية · V4</small>
           </div>
         </div>
         <small>مساحة الإدارة</small>
@@ -212,6 +216,8 @@ function App() {
         ) : (
           data && (
             <>
+              {tab === 'verifications' && <VerificationPanel users={data.users} reload={load}/>}
+              {tab === 'notifications' && <NotificationsPanel notifications={data.notifications} reload={load}/>}
               {tab === "overview" && (
                 <>
                   <div className="metrics">

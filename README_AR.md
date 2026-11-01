@@ -1,27 +1,21 @@
-# Karty Admin V3 — Static Site مستقل على Render
+# كرتي — Admin V4 المستقل
 
-هذا المشروع لا يحتاج تشغيل Backend أو وجوده في مجلد مجاور. لوحة المدير المركزي؛ تطبيق مالك الشبكة مشروع Flutter مختلف.
+## النشر على Render
+اختر Static Site، وليس Web Service مدفوعاً. Root Directory فارغ لمستودع مستقل أوAdmin-Panel فيmonorepo. Build: `npm install --include=dev && npm run build`. Publish Directory: `dist`. لاStart Command.
 
-## نشر مستقل
-1. ارفع محتويات Admin-Panel لمستودع Private مستقل. إن بقيت تحت مجلد في monorepo اجعل Root Directory=Admin-Panel، وإلا اتركه فارغاً.
-2. Render > New > Static Site، وليس Node Web Service. لا يوجد Start Command في Static Site.
-3. Build Command: npm install --include=dev && npm run build
-4. Publish Directory: dist
-5. المتغير الوحيد الذي تحتاجه للربط:
-```
-VITE_API_URL=https://backend-428l.onrender.com/api/v1
-```
-القيمة الافتراضية في الكود هي الرابط أعلاه، والمتغير مرفق في.env.example وrender.admin.env.example. إذا تغيّر عنوان Backend غيّره هنا ثم أعد البناء والنشر، لأنه يُضمّن فيVite وقت البناء.
-6. في Redirects/Rewrites أضف Source=/*، Destination=/index.html، Action=Rewrite. Blueprint render.yaml المرفق يضبط ذلك عند النشر به.
-7. بعد ظهور رابط Static Site الحقيقي، انسخ **أصله** إلى CORS_ORIGINS في Backend، مثلاً https://karty-admin-abc.onrender.com، ثم أعد نشر Backend. لا تستخدم مثالاً تخمينياً بدل الرابط الفعلي.
-8. سجّل دخولك بحساب superadmin الموجود. رقم المدير لا يُستخدم للدخول في تطبيق المالك أو البقالة.
+المتغير العام: `VITE_API_URL=https://backend-428l.onrender.com/api/v1`.
+أضف Rewrite من `/*` إلى `/index.html`، وانسخ أصل رابط اللوحة الحقيقي إلى CORS_ORIGINS في Backend وأعد نشره. لا تضع أسرار MongoDB أوCloudinary أوFirebase في هذا المشروع أوVITE.
 
-لا تضع MONGODB_URI أو Cloudinary secret أو JWT_SECRET أو CARD_ENCRYPTION_KEY في هذا المشروع أو VITE_*؛ أي متغيرVITE عام في ملفات JavaScript. متغير CORS_ORIGINS مكانه Backend فقط.
+## رموز التحقق
+بعد دخول superadmin افتح «رموز التحقق والتفعيل». سترى اسم المشترك ورقمه ودوره وكود التحقق وصلاحيته والمحاولات. تحقق من هوية المشترك ثم سلّمه الرمز بنفسك عبر وسيلتك المعتمدة. صلاحية الكود24 ساعة وخمس أخطاء. «إصدار رمز جديد» يبطل القديم ويسجل الإجراء فيAudit دون تسجيل الرمز نفسه.
 
-تحديث هذا المستودع يعيد بناء هذه اللوحة فقط. تشغيل البناء لا يحتاج npm run build من مجلد أب أو سكربت Root محذوف. تحقق البناء يرفض رابطاً نسبياً /api/v1 أو عنوانYOUR-... في الإنتاج، لتجنب إرسال تسجيل الدخول إلى Static Site نفسه.
+لا يوجد إرسال SMS آلي. الإشعارات العامة لا تحمل OTP. التبويب يتحدث كل20 ثانية أو بزر التحديث. لا توجد ترقية إلى مدير من التسجيل العام. رموز التحقق ليست كروت إنترنت ولا تُعرض للبقالات.
 
-## محلياً
-npm install ثم npm run dev. أضف http://localhost:5173 إلى CORS_ORIGINS في Backend عند السماح بالتجربة من جهازك. قد يستغرق أول طلب للخادم المجاني وقتاً؛ مهلة Axios100 ثانية.401 يعني بيانات دخول/جلسة،403 صلاحيات، وخطأCORS يعني إعداد أصل اللوحة وليس كلمة مرور.
+تفعيل الرقم مستقل عن تفعيل شبكة المالك وخطة الاشتراك واعتماد عضوية البقالة. توجد «إشعارات الإدارة» للتسجيلات الجديدة. انشر Backend V4 قبل استخدام هذه المسارات في اللوحة.
 
-## اختبار
-npm run build — بناء الإنتاج مُختبر. سجله في TEST_RESULTS/admin-build.txt. راجع DELIVERY_REPORT.md لنتائج المرحلة وحدودها.
+بناء Vite الإنتاجي ناجح؛ السجل في TEST_RESULTS، والتقرير فيDELIVERY_REPORT.md.
+
+## مهم عند التحديث
+انشر Backend ثم Admin ثم التطبيقين. لا تغيّر MONGODB_URI أو JWT_SECRET أو CARD_ENCRYPTION_KEY أو مفاتيح Cloudinary الحالية. لا تمسح بيانات تطبيق البقالة أو تبدّل معرف التطبيق/مفتاح توقيعه مع وجود مخزون أو مبيعات معلقة. الحسابات القائمة من V3 تستمر؛ التسجيلات الجديدة تحتاج تطبيق V4 لإدخال رمز الإدارة.
+
+الحزم شيفرة مصدرية وليست APK/AAB موقّعة. لم ننشر في حساباتكم ولم نختبر Firebase حيّاً أو بصمة جهازكم أو طابعتكم. نتائج الاختبارات وحدودها في DELIVERY_REPORT.md والسجلات في TEST_RESULTS.
