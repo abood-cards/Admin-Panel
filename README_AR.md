@@ -1,14 +1,6 @@
-# لوحة الإدارة المركزية — كرتي V1
-React + Vite + Tailwind + Lucide، عربي RTL.
-```bash
-npm ci
-cp .env.example .env
-npm run dev
-npm run build
-```
-غيّر VITE_API_URL إلى backend الخاص بك منتهياً بـ /api/v1، واضبط CORS_ORIGINS في الخادم.
-الدخول بحساب superadmin الذي ينشأ من npm run seed في Backend. لا حسابات افتراضية.
-قائمة الشبكات: التفعيل والخطة وتاريخ الانتهاء. الحسابات: تفعيل وتعطيل. السياسات: فتح التسجيل وحد الحزم وهاتف الدعم.
-أرقام الذاكرة والزمن خاصة بعملية Node ولا تمثل استهلاك حصص Render أو Cloudinary.
-الواجهة تعرض حتى 200 حساب/شبكة وآخر 100 حدث تدقيق، والبحث محلي في القائمة المحملة.
-التخزين في sessionStorage. كل مسارات الإدارة تفرض superadmin على الخادم أيضاً.
+# Karty Admin V2.1
+في النشر الموحد: تبنى من جذر الحزمة وتستخدم VITE_API_URL=/api/v1؛ Express يقدم الملفات من نفس أصل API. لا ترفع مفاتيح Backend في بيئة اللوحة.
+
+في نشر Static مستقل: Root Directory=Admin-Panel، Build=npm ci --include=dev && npm run build، Publish Directory=dist. المتغير الوحيد المطلوب: VITE_API_URL=https://YOUR-REAL-API.onrender.com/api/v1. أضف Rewrite /* إلى /index.html واضبط CORS_ORIGINS في Backend على أصل رابط اللوحة. لا تقبل عملية البناء عنواناً تجريبياً أو localhost للإنتاج.
+
+تغيير VITE_API_URL يتطلب إعادة البناء، وليس مجرد إعادة تشغيل الخادم. راجع README.md الرئيسي للتفاصيل وتهيئة الأدمن.

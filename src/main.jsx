@@ -81,7 +81,7 @@ function Login({ onLogin }) {
         <button disabled={busy}>
           {busy ? "جارٍ الاتصال…" : "تسجيل الدخول الآمن"}
         </button>
-        <small>حساب المدير ينشأ بسكربت seed. لا كلمة مرور افتراضية.</small>
+        <small>حساب المدير ينشأ عند تهيئة الخادم. استخدم البيانات التي حددتها في متغيرات Render.</small>
       </form>
     </div>
   );
@@ -159,7 +159,7 @@ function App() {
           <img className="brand-logo small" src="/brand/karty-logo.png" alt="كرتي Karty" />
           <div>
             <b>كرتي</b>
-            <small>الإدارة المركزية · V2</small>
+            <small>الإدارة المركزية · V2.1</small>
           </div>
         </div>
         <small>مساحة الإدارة</small>
