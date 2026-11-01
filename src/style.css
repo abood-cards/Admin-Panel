@@ -1,0 +1,396 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  font-family: Tahoma, Arial, sans-serif;
+  color: #182943;
+  background: #f2f5fa;
+  font-size: 14px;
+}
+* {
+  box-sizing: border-box;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  border: 0;
+  background: #156b61;
+  color: white;
+  border-radius: 10px;
+  padding: 11px 17px;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+input,
+select {
+  border: 1px solid #d5dfea;
+  background: white;
+  border-radius: 9px;
+  padding: 10px;
+  max-width: 100%;
+  outline-color: #1b9784;
+}
+h1 {
+  font-size: 27px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+h3 {
+  font-weight: 700;
+}
+p {
+  line-height: 1.9;
+  color: #6c7d90;
+}
+small {
+  display: block;
+  color: #7f8da0;
+  font-size: 11px;
+  line-height: 1.9;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #159e89;
+  font-weight: 700;
+}
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+.shell aside {
+  width: 252px;
+  background: #0c1a32;
+  color: white;
+  padding: 30px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #44d3b5;
+  margin-bottom: 42px;
+}
+.brand b {
+  font-size: 31px;
+}
+.brand small {
+  color: #a8b7cc;
+}
+.shell aside button {
+  justify-content: flex-start;
+  background: transparent;
+  color: #9daec5;
+}
+.shell aside button.selected {
+  background: #164b48;
+  color: #74e6cd;
+}
+.safe {
+  display: flex;
+  gap: 9px;
+  background: #ffffff08;
+  border: 1px solid #ffffff0d;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+.safe p {
+  margin: 0;
+  color: #d1dbea;
+  font-size: 11px;
+}
+.safe svg {
+  color: #50ccb3;
+  flex-shrink: 0;
+}
+main {
+  flex: 1;
+  min-width: 0;
+  padding: 38px;
+}
+.outline {
+  background: white;
+  color: #304960;
+  border: 1px solid #dce4ed;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.metrics article,
+.panels article {
+  background: white;
+  border: 1px solid #e3e9f1;
+  padding: 23px;
+  border-radius: 17px;
+}
+.metrics svg {
+  color: #0d8d78;
+  background: #e5f6f1;
+  box-sizing: content-box;
+  padding: 10px;
+  border-radius: 12px;
+}
+.metrics strong {
+  font-size: 32px;
+  display: block;
+}
+.metrics p {
+  margin: 14px 0 8px;
+}
+.panels {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 18px;
+  margin-top: 22px;
+}
+.panels .hero {
+  background: linear-gradient(120deg, #0d2b3e, #116f64);
+  color: white;
+  padding: 35px;
+}
+.hero h2 {
+  font-size: 42px;
+  margin-top: 20px;
+}
+.hero h2 small {
+  display: inline;
+  color: #addace;
+}
+.hero p {
+  color: #a1c9c8;
+}
+.notice {
+  margin-top: 22px;
+  padding: 20px;
+  border: 1px solid #d3e3ed;
+  border-radius: 14px;
+  background: #eaf2f8;
+  color: #4d6c86;
+  line-height: 1.9;
+}
+.table-panel {
+  background: white;
+  border: 1px solid #e3e9f1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.tools {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.tools label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.table-scroll {
+  overflow: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  text-align: right;
+}
+th {
+  background: #f7f9fc;
+  color: #7e8c9d;
+  font-size: 12px;
+  font-weight: 400;
+}
+th,
+td {
+  padding: 17px 20px;
+  border-bottom: 1px solid #edf1f6;
+}
+td code {
+  font-size: 10px;
+  color: #8194a5;
+}
+.badge {
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+.ok {
+  background: #dcf6eb;
+  color: #16745a;
+}
+.pending {
+  background: #fff0d6;
+  color: #986b21;
+}
+.empty {
+  padding: 70px;
+  text-align: center;
+}
+.empty svg {
+  margin: auto;
+  color: #a1b6ca;
+}
+.error {
+  background: #fff0ef;
+  color: #a13e39;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.limit {
+  padding: 15px;
+}
+.skeleton {
+  height: 220px;
+  background: linear-gradient(100deg, #e6ebf2, #f9fbfd, #e6ebf2);
+  background-size: 200%;
+  border-radius: 20px;
+  animation: pulse 1.3s infinite;
+}
+@keyframes pulse {
+  to {
+    background-position: 200%;
+  }
+}
+.login {
+  min-height: 100vh;
+  background: #0a1128;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 8vw;
+}
+.intro {
+  color: white;
+  max-width: 480px;
+}
+.intro h1 {
+  font-size: 42px;
+  line-height: 1.6;
+}
+.intro p {
+  color: #98afc6;
+}
+.pill {
+  display: inline-flex;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #294456;
+  border-radius: 30px;
+  color: #58cfb7;
+  font-size: 12px;
+  margin-top: 20px;
+}
+.login form {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  width: 400px;
+}
+.login label {
+  display: block;
+  margin: 20px 0;
+}
+.login input {
+  display: block;
+  width: 100%;
+  margin-top: 9px;
+}
+.login form button {
+  width: 100%;
+  padding: 15px;
+}
+.login form small {
+  margin-top: 17px;
+}
+.login h2 {
+  margin-top: 10px;
+}
+@media (max-width: 900px) {
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shell aside {
+    width: 185px;
+  }
+  main {
+    padding: 20px;
+  }
+  .panels {
+    grid-template-columns: 1fr;
+  }
+  .intro {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .shell {
+    display: block;
+  }
+  .shell aside {
+    width: 100%;
+    padding: 14px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .brand {
+    margin: 0;
+  }
+  .shell aside .brand b {
+    font-size: 23px;
+  }
+  .safe {
+    display: none;
+  }
+  .shell aside button {
+    font-size: 11px;
+    padding: 8px;
+  }
+  .shell aside .brand small,
+  .shell aside > small {
+    display: none;
+  }
+  header h1 {
+    font-size: 20px;
+  }
+  .login {
+    padding: 16px;
+  }
+  .login form {
+    padding: 25px;
+  }
+  .tools {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
