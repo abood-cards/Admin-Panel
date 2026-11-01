@@ -1,7 +1,7 @@
 import axios from "axios";
 export const api = axios.create({
-  baseURL: (import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "http://localhost:10000/api/v1" : "/api/v1")).trim().replace(/\/$/, ""),
-  timeout: 75000,
+  baseURL: (import.meta.env.VITE_API_URL || "https://backend-428l.onrender.com/api/v1").trim().replace(/\/$/, ""),
+  timeout: 100000,
 });
 api.interceptors.request.use((c) => {
   const t = sessionStorage.getItem("karty_token");

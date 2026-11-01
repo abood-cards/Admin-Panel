@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.dart_tool/
+build/
+android/.gradle/
+android/.kotlin/
+android/local.properties
+.flutter-plugins*
+.env
+.env.*
+*.env
+!.env.example
+*.jks
+*.keystore
+key.properties
+*.log
+.DS_Store

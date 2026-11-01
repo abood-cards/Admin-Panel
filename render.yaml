@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: karty-admin
+    runtime: static
+    buildCommand: npm install --include=dev && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: 22.23.0
+      - key: VITE_API_URL
+        value: https://backend-428l.onrender.com/api/v1
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

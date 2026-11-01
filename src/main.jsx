@@ -159,7 +159,7 @@ function App() {
           <img className="brand-logo small" src="/brand/karty-logo.png" alt="كرتي Karty" />
           <div>
             <b>كرتي</b>
-            <small>الإدارة المركزية · V2.1</small>
+            <small>الإدارة المركزية · V3</small>
           </div>
         </div>
         <small>مساحة الإدارة</small>
