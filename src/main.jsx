@@ -40,7 +40,7 @@ function Login({ onLogin }) {
     <div className="login">
       <div className="intro">
         <div className="brand">
-          <Wifi size={45} />
+          <img className="brand-logo" src="/brand/karty-logo.png" alt="كرتي Karty" />
           <b>كرتي</b>
         </div>
         <h1>
@@ -156,10 +156,10 @@ function App() {
     <div className="shell">
       <aside>
         <div className="brand">
-          <Wifi size={33} />
+          <img className="brand-logo small" src="/brand/karty-logo.png" alt="كرتي Karty" />
           <div>
             <b>كرتي</b>
-            <small>الإدارة المركزية · V1</small>
+            <small>الإدارة المركزية · V2</small>
           </div>
         </div>
         <small>مساحة الإدارة</small>

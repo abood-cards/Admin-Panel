@@ -394,3 +394,17 @@ td code {
     flex-direction: column;
   }
 }
+
+/* Official Karty identity V2; fonts are bundled, no Google font calls. */
+@font-face{font-family:Cairo;src:url('/fonts/Cairo.ttf') format('truetype');font-display:swap}
+@font-face{font-family:Outfit;src:url('/fonts/Outfit.ttf') format('truetype');font-display:swap}
+:root{color-scheme:dark;font-family:Cairo,Arial,sans-serif;background:#0B111E;color:#dcecff}
+.brand-logo{width:124px;height:124px;object-fit:contain;border-radius:22px}.brand-logo.small{width:55px;height:55px;border-radius:10px}
+.login{background:#0B111E}.login form{background:#111c2d;border:1px solid #22314a}.intro h1{font-weight:650}.brand{color:#00D2FF}
+.login input,input,select{background:#0B111E;border-color:#24364f;color:#e5f2ff}.login form h2,h1,h2,h3{color:#e2f1ff}
+.shell aside{background:#0B111E;border-left:1px solid #20304a}.shell aside button.selected{background:linear-gradient(110deg,#12364b,#1a3863);color:#00D2FF}
+main{background:#0e1727}.metrics article,.panels article,.table-panel{background:#111c2d;border-color:#21324b}
+button{background:linear-gradient(110deg,#00D2FF,#3A7BD5);color:#041322}.outline{background:#142238;color:#b5dff7;border-color:#25405c}
+.metrics svg{background:#112c42;color:#00D2FF}.metrics strong{font-family:Outfit,Cairo,sans-serif}.panels .hero{background:linear-gradient(110deg,#123247,#203f72)}
+p,small{color:#9fb0c6}.eyebrow{color:#00D2FF}.notice{background:#142238;border-color:#28405f;color:#b4c9e2}
+th{background:#0e1727;color:#9ab1cc}td,th{border-color:#22334a}.pill{color:#00D2FF;border-color:#254969}.ok{background:#123947;color:#65d9ed}.pending{background:#3c3025;color:#f5c587}.skeleton{background:linear-gradient(100deg,#15243a,#253b56,#15243a)}
